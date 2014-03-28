@@ -1,0 +1,2 @@
+include 'api', 'client', 'client-extras' //, include 'server'
+rootProject.name = 'SnappyRPC'

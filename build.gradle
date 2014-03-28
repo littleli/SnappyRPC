@@ -1,0 +1,67 @@
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile 'org.hamcrest:hamcrest-all:1.3'
+        testCompile 'org.mockito:mockito-all:1.9.5'
+        testCompile('junit:junit:4.11') {
+            exclude module: 'hamcrest-core'
+        }
+    }
+
+    version = '1.0-SNAPSHOT'
+    group = 'cz.snappyapps.snappyrpc'
+    // jar.archiveName = "snappyrpc-${name}-${version}.jar"
+
+    jar {
+        manifest.attributes provider: 'gradle'
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
+
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                pom.project {
+                    licenses {
+                        license {
+                            name 'The MIT License (MIT)'
+                            url 'http://opensource.org/licenses/MIT'
+                            distribution 'repo'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}

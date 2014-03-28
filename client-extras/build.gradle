@@ -1,0 +1,8 @@
+dependencies {
+    compile project(':client')
+    testCompile project(':client').sourceSets.test.output
+
+    compile 'org.eclipse.jetty:jetty-client:9.0.2.v20130417'
+    compile 'us.bpsm:edn-java:0.4.3'
+    compile 'com.thoughtworks.xstream:xstream:1.4.7'
+}
