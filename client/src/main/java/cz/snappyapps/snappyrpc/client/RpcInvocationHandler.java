@@ -91,7 +91,6 @@ abstract class RpcInvocationHandler implements InvocationHandler {
 
     private Response getResponse(Request request) {
         String buffer = transporter.sendAndReceive(marshaller.marshall(request));
-        logger.info(buffer);
         @SuppressWarnings("unchecked")
         Map<String, ?> response = marshaller.unmarshall(buffer, Map.class);
         return new Response(response);

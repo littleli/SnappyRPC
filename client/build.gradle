@@ -2,9 +2,9 @@ dependencies {
     compile project(':api')
 
     compile 'org.slf4j:slf4j-jdk14:1.7.6'
-    compile 'com.squareup.okhttp:okhttp:1.2.1'
-    compile 'com.google.code.gson:gson:2.2.4'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.2.2'
-    compile 'com.google.guava:guava:16.0.1'
-    compile 'org.apache.httpcomponents:httpclient:4.3.1'
+    optional 'com.squareup.okhttp:okhttp:1.2.1'
+    optional 'com.google.code.gson:gson:2.2.4'
+    optional 'com.fasterxml.jackson.core:jackson-databind:2.2.2'
+    optional 'com.google.guava:guava:16.0.1'
+    optional 'org.apache.httpcomponents:httpclient:4.3.1'
 }

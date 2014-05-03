@@ -62,6 +62,22 @@ subprojects {
 
 
 
+buildscript {
+    repositories {
+        maven { url 'http://repo.spring.io/plugins-release-local' }
+    }
+    dependencies {
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.6'
+    }
+}
+
+configure(allprojects) {
+    apply plugin: 'propdeps'
+    apply plugin: 'propdeps-maven'
+    apply plugin: 'propdeps-idea'
+    apply plugin: 'propdeps-eclipse'
+}
+
 task wrapper(type: Wrapper) {
     gradleVersion = '1.11'
 }
